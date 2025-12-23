@@ -4,12 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>汉鼎·螺纹钢小综合 | 深度测评网页</title>
+    <title>汉鼎·螺纹钢小综合 | 深度测评 (版面优化版)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    screens: {
+                        '3xl': '2000px',
+                    },
                     colors: {
                         techBlack: '#0a0a0a',
                         carbonGray: '#1f1f1f',
@@ -97,6 +100,9 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            /* 确保内容垂直居中且不被遮挡 */
+            padding-top: 4rem; 
+            padding-bottom: 2rem;
         }
 
         .animate-on-scroll {
@@ -204,13 +210,17 @@
         .visible .ring-circle-3 {
             stroke-dashoffset: 150;
         }
+        
+        .video-container {
+            position: relative;
+        }
     </style>
 </head>
 
 <body class="bg-techBlack text-white antialiased overflow-x-hidden font-sans">
 
-    <!-- FINAL ENDING MODAL (Hidden by default, Highest Z-Index) -->
-    <div id="ending-modal" class="fixed inset-0 z-[9999] bg-black flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-1000">
+    <!-- FINAL ENDING MODAL -->
+    <div id="ending-modal" class="fixed inset-0 z-[9999] bg-black/50 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none transition-all duration-1000">
         <div class="text-center transform scale-90 opacity-0 transition-all duration-1000" id="ending-content">
             <h1 class="text-5xl md:text-8xl font-black text-white mb-6 tracking-tighter leading-tight drop-shadow-2xl">
                 与汉鼎一起<br>
@@ -221,17 +231,16 @@
 
     <!-- Fixed Navbar -->
     <nav class="fixed w-full z-50 bg-techBlack/80 backdrop-blur-md border-b border-gray-800 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
+        <!-- 容器宽度回调：2xl:max-w-[85%] -->
+        <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 2xl:h-20">
                 <div class="flex items-center group cursor-pointer">
                     <!-- LOGO -->
-                    <img src="asset/logo.png" alt="汉鼎LOGO" class="h-8 object-contain mr-4 hover:brightness-125 transition">
-
+                    <img src="asset/logo.png" alt="汉鼎LOGO" class="h-8 2xl:h-10 object-contain mr-4 hover:brightness-125 transition">
                     <!-- Vertical Divider -->
-                    <div class="h-4 w-px bg-gray-600 mr-4"></div>
-
-                    <!-- Slogan: White & Italic -->
-                    <span class="text-xs md:text-sm font-bold text-white italic tracking-wider uppercase">@与汉鼎一起去钓鱼</span>
+                    <div class="h-4 w-px bg-gray-600 mr-4 2xl:h-6"></div>
+                    <!-- Slogan -->
+                    <span class="text-xs md:text-sm 2xl:text-lg font-bold text-white italic tracking-wider uppercase">@与汉鼎一起去钓鱼</span>
                 </div>
             </div>
         </div>
@@ -240,23 +249,24 @@
     <!-- MODULE 1: HERO -->
     <section class="relative snap-start overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <!-- 首页背景视频 asset/111.mp4 -->
             <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-60 parallax-bg" style="transform: scale(1.1);">
                 <source src="asset/111.mp4" type="video/mp4">
             </video>
             <div class="absolute inset-0 bg-gradient-to-t from-techBlack via-techBlack/60 to-transparent"></div>
         </div>
 
-        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="relative z-10 w-full max-w-7xl 2xl:max-w-[85%] mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 2xl:gap-12 items-center">
             <div class="order-2 md:order-1 animate-on-scroll">
-                <h1 class="text-4xl md:text-6xl font-black italic leading-tight mb-2">
+                <!-- 字体从 8xl 降为 6xl -->
+                <h1 class="text-4xl md:text-6xl 2xl:text-6xl font-black italic leading-tight mb-2">
                     谁说<span class="text-vitalityOrange mx-2">螺纹钢</span><br>
                     一定要<span class="text-white">重</span>？
                 </h1>
-                <h2 class="text-xl md:text-2xl text-gray-300 font-light mt-4 mb-8">
-                    汉鼎螺纹钢小综合 · 7.2m仅重 <span class="text-6xl font-black text-vitalityOrange tracking-tighter counter-up" data-target="188">0</span><span class="text-vitalityOrange text-2xl">g</span>
+                <!-- 字体从 4xl 降为 3xl -->
+                <h2 class="text-xl md:text-2xl 2xl:text-3xl text-gray-300 font-light mt-4 mb-8 2xl:mt-6 2xl:mb-10">
+                    汉鼎螺纹钢小综合 · 7.2m仅重 <span class="text-6xl 2xl:text-7xl font-black text-vitalityOrange tracking-tighter counter-up" data-target="188">0</span><span class="text-vitalityOrange text-2xl 2xl:text-4xl">g</span>
                 </h2>
-                <div class="flex items-center space-x-2 text-gray-400 text-sm border-l-2 border-vitalityOrange pl-4">
+                <div class="flex items-center space-x-2 2xl:space-x-4 text-gray-400 text-sm 2xl:text-lg border-l-2 border-vitalityOrange pl-4 2xl:pl-6">
                     <p>钢铁般的意志</p>
                     <span>·</span>
                     <p>羽毛般的手感</p>
@@ -267,12 +277,11 @@
                 <div class="absolute inset-0 bg-vitalityOrange/10 blur-[120px] rounded-full group-hover:bg-vitalityOrange/30 transition duration-700"></div>
                 <video autoplay loop muted playsinline class="rod-image h-full object-contain relative z-10 drop-shadow-2xl">
                     <source src="./assets/444.mp4" type="video/mp4">
-                    <img src="https://placehold.co/300x800/transparent/orange?text=鱼竿竖立特写(444.mp4)" class="h-full object-contain">
                 </video>
             </div>
         </div>
 
-        <!-- Scroll Prompt (Icon Only) -->
+        <!-- Scroll Prompt -->
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce opacity-50">
             <div class="w-6 h-10 border-2 border-gray-500 rounded-full flex justify-center pt-2">
                 <div class="w-1 h-2 bg-vitalityOrange rounded-full"></div>
@@ -281,48 +290,51 @@
     </section>
 
     <!-- MODULE 2: UNBOXING -->
-    <section class="py-24 bg-carbonGray relative overflow-hidden snap-start">
+    <!-- padding 从 py-32/48 降为 py-24/28 -->
+    <section class="py-24 2xl:py-28 bg-carbonGray relative overflow-hidden snap-start">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-carbon-pattern opacity-10"></div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="flex flex-col gap-6 animate-on-scroll group">
-                    <div class="relative h-64 rounded-2xl overflow-hidden border border-gray-700 hover:border-vitalityOrange transition-all duration-500 group/item shadow-xl">
+        <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <!-- Gap 减小 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 2xl:gap-16 items-center">
+                <div class="flex flex-col gap-6 2xl:gap-8 animate-on-scroll group">
+                    <!-- 图片高度限制：2xl:h-96 -> 2xl:h-80 -->
+                    <div class="relative h-64 2xl:h-80 rounded-2xl overflow-hidden border border-gray-700 hover:border-vitalityOrange transition-all duration-500 group/item shadow-xl">
                         <img src="asset/ganyao.png" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover/item:scale-105 transition duration-700">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/90 to-transparent"></div>
-                        <div class="relative z-10 p-8 flex flex-col justify-center h-full">
-                            <h3 class="text-3xl font-black text-white italic mb-2">敢耀</h3>
-                            <div class="w-12 h-1 bg-vitalityOrange mb-4"></div>
-                            <p class="text-gray-300 text-sm max-w-xs">无论是在黑坑还是野外，拿出它的瞬间，<br />就是全场焦点。<br><span class="text-xs text-gray-500 mt-2 block"></span></p>
+                        <div class="relative z-10 p-8 2xl:p-10 flex flex-col justify-center h-full">
+                            <h3 class="text-3xl 2xl:text-4xl font-black text-white italic mb-2">敢耀</h3>
+                            <div class="w-12 2xl:w-16 h-1 bg-vitalityOrange mb-4"></div>
+                            <p class="text-gray-300 text-sm 2xl:text-lg max-w-xs 2xl:max-w-sm">无论是在黑坑还是野外，拿出它的瞬间，<br />就是全场焦点。<br><span class="text-xs text-gray-500 mt-2 block"></span></p>
                         </div>
                     </div>
-                    <div class="relative h-64 rounded-2xl overflow-hidden border border-gray-700 hover:border-white transition-all duration-500 group/item shadow-xl">
+                    <div class="relative h-64 2xl:h-80 rounded-2xl overflow-hidden border border-gray-700 hover:border-white transition-all duration-500 group/item shadow-xl">
                         <img src="asset/qc.png" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover/item:scale-105 transition duration-700">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/90 to-transparent"></div>
-                        <div class="relative z-10 p-8 flex flex-col justify-center h-full">
-                            <h3 class="text-3xl font-black text-white italic mb-2">青春</h3>
-                            <div class="w-12 h-1 bg-white mb-4"></div>
-                            <p class="text-gray-300 text-sm max-w-xs">年轻不设限，从新手小白到顶级大师，<br />陪你征服每一条未知的河流。<br><span class="text-xs text-gray-500 mt-2 block"></span></p>
+                        <div class="relative z-10 p-8 2xl:p-10 flex flex-col justify-center h-full">
+                            <h3 class="text-3xl 2xl:text-4xl font-black text-white italic mb-2">青春</h3>
+                            <div class="w-12 2xl:w-16 h-1 bg-white mb-4"></div>
+                            <p class="text-gray-300 text-sm 2xl:text-lg max-w-xs 2xl:max-w-sm">年轻不设限，从新手小白到顶级大师，<br />陪你征服每一条未知的河流。<br><span class="text-xs text-gray-500 mt-2 block"></span></p>
                         </div>
                     </div>
                 </div>
 
                 <div class="animate-on-scroll delay-100 pl-4 md:pl-10">
-                    <h2 class="text-4xl md:text-6xl font-black mb-8 italic leading-snug py-4 pr-16 -ml-4 pl-4 overflow-visible">
+                    <h2 class="text-4xl md:text-6xl 2xl:text-7xl font-black mb-8 2xl:mb-10 italic leading-snug py-4 pr-16 -ml-4 pl-4 overflow-visible">
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 inline-block pb-1 pr-2">敢耀</span><br>
                         <span class="text-vitalityOrange neon-text inline-block">青春</span>
                     </h2>
-                    <p class="text-gray-400 text-lg mb-10 leading-relaxed font-light">
+                    <p class="text-gray-400 text-lg 2xl:text-2xl mb-10 2xl:mb-12 leading-relaxed font-light 2xl:leading-normal">
                         橙白渐变涂装恰似晨光驱散夜暗，这抹 <strong class="text-white">“战斗橙”</strong> 正是延续了经典螺纹钢的热血底色。<br>这不仅是一根鱼竿，更是年轻钓友握在手中的青春 <strong class="text-white">“战戟”</strong>，把热爱亮成破晓的光。
                     </p>
-                    <div class="glass-panel p-8 rounded-2xl border-l-4 border-vitalityOrange group">
-                        <div class="flex items-start gap-6">
-                            <img src="https://placehold.co/6x60/666/white?text=Me" class="w-14 h-14 rounded-full border-2 border-gray-600 group-hover:border-vitalityOrange transition duration-300">
+                    <div class="glass-panel p-8 2xl:p-10 rounded-2xl border-l-4 border-vitalityOrange group">
+                        <div class="flex items-start gap-6 2xl:gap-8">
+                            <img src="asset/me.png" class="w-14 h-14 2xl:w-20 2xl:h-20 rounded-full border-2 border-gray-600 group-hover:border-vitalityOrange transition duration-300 object-cover">
                             <div>
-                                <p class="typewriter-text text-base text-gray-300 italic mb-4 group-hover:text-white transition-colors min-h-[4rem]">
+                                <p class="typewriter-text text-base 2xl:text-xl text-gray-300 italic mb-4 2xl:mb-4 group-hover:text-white transition-colors min-h-[4rem]">
                                     "拿到手的第一感觉是‘惊艳’。鱼竿整体上手轻盈，漆水在阳光下非常有质感。期待下水试钓 ing~"
                                 </p>
-                                <p class="text-xs font-bold text-vitalityOrange tracking-widest">—— 新品体验官 @Yinntags</p>
+                                <p class="text-xs 2xl:text-base font-bold text-vitalityOrange tracking-widest">—— 新品体验官 @Yinntags</p>
                             </div>
                         </div>
                     </div>
@@ -332,89 +344,99 @@
     </section>
 
     <!-- MODULE 3: HARDCORE SPECS -->
-    <section class="py-32 bg-techBlack relative snap-start">
+    <!-- padding 适度回调 -->
+    <section class="py-24 2xl:py-32 bg-techBlack relative snap-start">
         <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#ff6b00 1px, transparent 1px); background-size: 40px 40px;"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="text-center mb-12 animate-on-scroll">
-                <h2 class="text-3xl md:text-5xl font-black text-white neon-text tracking-tight">为什么叫“螺纹钢小综合”？</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto text-lg mt-4">多重碳布混编，给轻量化穿上“防弹衣”。</p>
+        <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="text-center mb-12 2xl:mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-5xl 2xl:text-6xl font-black text-white neon-text tracking-tight">为什么叫“螺纹钢小综合”？</h2>
+                <p class="text-gray-400 max-w-2xl 2xl:max-w-3xl mx-auto text-lg 2xl:text-2xl mt-4 2xl:mt-6">多重碳布混编，给轻量化穿上“防弹衣”。</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="glass-panel p-10 rounded-3xl flex flex-col items-center justify-center animate-on-scroll group cursor-pointer">
-                    <div class="relative w-48 h-48 mb-8 group-hover:scale-110 transition-transform duration-500">
+            <!-- Gap 减小 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 2xl:gap-12">
+                <!-- Card 1 -->
+                <!-- padding 减小: p-16 -> p-10 -->
+                <div class="glass-panel p-10 2xl:p-10 rounded-3xl flex flex-col items-center justify-center animate-on-scroll group cursor-pointer">
+                    <div class="relative w-48 h-48 2xl:w-56 2xl:h-56 mb-8 2xl:mb-8 group-hover:scale-110 transition-transform duration-500">
                         <svg class="w-full h-full transform -rotate-90 group-hover:rotate-90 transition-transform duration-[1.5s]">
                             <circle cx="50%" cy="50%" r="45" class="stroke-gray-800" stroke-width="8" fill="transparent"></circle>
                             <circle cx="50%" cy="50%" r="45" class="ring-circle ring-circle-1 stroke-vitalityOrange group-hover:stroke-white transition-colors" stroke-width="8" fill="transparent" stroke-linecap="round"></circle>
                             <circle cx="50%" cy="50%" r="35" class="ring-circle ring-circle-2 stroke-white opacity-80" stroke-width="8" fill="transparent" stroke-linecap="round" style="transition-delay: 0.2s"></circle>
                             <circle cx="50%" cy="50%" r="25" class="ring-circle ring-circle-3 stroke-gray-500" stroke-width="8" fill="transparent" stroke-linecap="round" style="transition-delay: 0.4s"></circle>
                         </svg>
-                        <div class="absolute inset-0 flex items-center justify-center"><span class="text-3xl font-black group-hover:text-vitalityOrange transition-colors">X</span></div>
+                        <div class="absolute inset-0 flex items-center justify-center"><span class="text-3xl 2xl:text-5xl font-black group-hover:text-vitalityOrange transition-colors">X</span></div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3 group-hover:text-vitalityOrange transition-colors">46+40+30T</h3>
-                    <p class="text-sm text-center text-gray-400 group-hover:text-white transition-colors">46T轻量感 + 30T防爆力<br>黄金三角配比</p>
+                    <h3 class="text-2xl 2xl:text-4xl font-bold mb-3 2xl:mb-4 group-hover:text-vitalityOrange transition-colors">46+40+30T</h3>
+                    <p class="text-sm 2xl:text-xl text-center text-gray-400 group-hover:text-white transition-colors">46T轻量感 + 30T防爆力<br>黄金三角配比</p>
                 </div>
-                <div class="glass-panel p-10 rounded-3xl flex flex-col items-center justify-center animate-on-scroll delay-100 group cursor-pointer">
-                    <div class="w-28 h-28 mb-8 relative flex items-center justify-center">
+                <!-- Card 2 -->
+                <div class="glass-panel p-10 2xl:p-10 rounded-3xl flex flex-col items-center justify-center animate-on-scroll delay-100 group cursor-pointer">
+                    <div class="w-28 h-28 2xl:w-40 2xl:h-40 mb-8 2xl:mb-8 relative flex items-center justify-center">
                         <div class="absolute w-full h-1 bg-gray-700 top-2 group-hover:bg-vitalityOrange transition-colors duration-300"></div>
-                        <div class="w-20 h-20 border-2 border-vitalityOrange rounded bg-transparent flex items-center justify-center group-hover:animate-bounce group-hover:bg-vitalityOrange group-hover:text-black transition-all duration-300">
-                            <span class="text-3xl font-black text-white group-hover:text-black">kg</span>
+                        <div class="w-20 h-20 2xl:w-28 2xl:h-28 border-2 border-vitalityOrange rounded bg-transparent flex items-center justify-center group-hover:animate-bounce group-hover:bg-vitalityOrange group-hover:text-black transition-all duration-300">
+                            <span class="text-3xl 2xl:text-5xl font-black text-white group-hover:text-black">kg</span>
                         </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3 group-hover:text-vitalityOrange transition-colors">2200g 顶钓值</h3>
-                    <p class="text-sm text-center text-gray-400 group-hover:text-white transition-colors">直接飞鱼，暴力测试<br>轻松提起4瓶矿泉水</p>
+                    <h3 class="text-2xl 2xl:text-4xl font-bold mb-3 2xl:mb-4 group-hover:text-vitalityOrange transition-colors">2200g 顶钓值</h3>
+                    <p class="text-sm 2xl:text-xl text-center text-gray-400 group-hover:text-white transition-colors">直接飞鱼，暴力测试<br>轻松提起4瓶矿泉水</p>
                 </div>
-                <div class="glass-panel p-10 rounded-3xl flex flex-col items-center justify-center animate-on-scroll delay-200 group cursor-pointer">
-                    <div class="flex items-end gap-10 mb-8 h-28 pb-2">
-                        <div class="w-6 h-full bg-gray-700 rounded-t relative transition-all duration-500 group-hover:h-3/4">
-                            <span class="absolute -top-8 left-1/2 -translate-x-1/2 text-xs text-gray-500 whitespace-nowrap">普通</span>
+                <!-- Card 3 -->
+                <div class="glass-panel p-10 2xl:p-10 rounded-3xl flex flex-col items-center justify-center animate-on-scroll delay-200 group cursor-pointer">
+                    <div class="flex items-end gap-10 2xl:gap-12 mb-8 2xl:mb-8 h-28 2xl:h-40 pb-2">
+                        <div class="w-6 2xl:w-8 h-full bg-gray-700 rounded-t relative transition-all duration-500 group-hover:h-3/4">
+                            <span class="absolute -top-8 left-1/2 -translate-x-1/2 text-xs 2xl:text-base text-gray-500 whitespace-nowrap">普通</span>
                         </div>
-                        <div class="w-4 h-full bg-vitalityOrange rounded-t relative shadow-[0_0_20px_rgba(255,107,0,0.5)] transition-all duration-500 group-hover:w-6 group-hover:shadow-[0_0_40px_rgba(255,107,0,0.8)]">
-                            <span class="absolute -top-8 left-1/2 -translate-x-1/2 text-xs text-vitalityOrange font-bold whitespace-nowrap">螺纹钢小综合</span>
+                        <div class="w-4 2xl:w-6 h-full bg-vitalityOrange rounded-t relative shadow-[0_0_20px_rgba(255,107,0,0.5)] transition-all duration-500 group-hover:w-6 2xl:group-hover:w-10 group-hover:shadow-[0_0_40px_rgba(255,107,0,0.8)]">
+                            <span class="absolute -top-8 left-1/2 -translate-x-1/2 text-xs 2xl:text-base text-vitalityOrange font-bold whitespace-nowrap">螺纹钢小综合</span>
                         </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3 group-hover:text-vitalityOrange transition-colors">20.7mm 元径</h3>
-                    <p class="text-sm text-center text-gray-400 group-hover:text-white transition-colors">比一枚硬币更细<br>风阻更小，手感更好</p>
+                    <h3 class="text-2xl 2xl:text-4xl font-bold mb-3 2xl:mb-4 group-hover:text-vitalityOrange transition-colors">20.7mm 元径</h3>
+                    <p class="text-sm 2xl:text-xl text-center text-gray-400 group-hover:text-white transition-colors">比一枚硬币更细<br>风阻更小，手感更好</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- MODULE 4: HARDCORE DISASSEMBLY -->
-    <section class="py-32 bg-carbonGray relative clip-path-slant snap-start">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="text-center mb-12 animate-on-scroll">
-                <span class="text-vitalityOrange font-mono tracking-[0.5em] text-sm uppercase block mb-2">INSIGHTS</span>
-                <h2 class="text-3xl md:text-5xl font-black text-white neon-text tracking-tight">硬核拆解：体验官视角</h2>
-                <p class="mt-4 text-gray-400">抛开枯燥参数，这根竿子上手到底什么感觉？</p>
+    <section class="py-24 2xl:py-28 bg-carbonGray relative clip-path-slant snap-start">
+        <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="text-center mb-12 2xl:mb-16 animate-on-scroll">
+                <span class="text-vitalityOrange font-mono tracking-[0.5em] text-sm 2xl:text-lg uppercase block mb-2">INSIGHTS</span>
+                <h2 class="text-3xl md:text-5xl 2xl:text-6xl font-black text-white neon-text tracking-tight">硬核拆解：体验官视角</h2>
+                <p class="mt-4 2xl:mt-6 text-gray-400 2xl:text-xl">抛开枯燥参数，这根竿子上手到底什么感觉？</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-panel p-10 rounded-3xl relative group animate-on-scroll cursor-default">
-                    <div class="absolute -top-8 -left-6 text-[10rem] font-black text-gray-800 opacity-10 group-hover:text-vitalityOrange group-hover:opacity-20 transition-all duration-700 transform group-hover:translate-x-4">01</div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 2xl:gap-12">
+                <!-- Insight 1 -->
+                <div class="glass-panel p-10 2xl:p-12 rounded-3xl relative group animate-on-scroll cursor-default">
+                    <!-- 数字大小回调：text-[18rem] -> text-[12rem] -->
+                    <div class="absolute -top-8 -left-6 text-[10rem] 2xl:text-[12rem] font-black text-gray-800 opacity-10 group-hover:text-vitalityOrange group-hover:opacity-20 transition-all duration-700 transform group-hover:translate-x-4">01</div>
                     <div class="relative z-10">
-                        <h3 class="text-2xl font-bold text-white mb-6 group-hover:text-vitalityOrange transition-colors">1H硬度下的腰力如何？</h3>
-                        <div class="h-1 w-16 bg-gray-700 mb-8 group-hover:w-full group-hover:bg-vitalityOrange transition-all duration-700"></div>
-                        <p class="text-gray-400 leading-relaxed text-base group-hover:text-gray-200 transition-colors">
-                            <span class="text-white font-bold block mb-3 text-lg">体验官实测@爱钓鱼的陈哥：</span>高吨位碳布与自动化生产工艺的加持下，中鱼瞬间，<span class="text-vitalityOrange font-bold">X-Power逆丝结构</span>让反拨力极强，感觉不是你在拉鱼，是竿子自己在往回弹。
+                        <h3 class="text-2xl 2xl:text-3xl font-bold text-white mb-6 2xl:mb-8 group-hover:text-vitalityOrange transition-colors">1H硬度下的腰力如何？</h3>
+                        <div class="h-1 w-16 2xl:w-20 bg-gray-700 mb-8 2xl:mb-8 group-hover:w-full group-hover:bg-vitalityOrange transition-all duration-700"></div>
+                        <p class="text-gray-400 leading-relaxed text-base 2xl:text-xl group-hover:text-gray-200 transition-colors">
+                            <span class="text-white font-bold block mb-3 2xl:mb-4 text-lg 2xl:text-2xl">体验官实测@爱钓鱼的陈哥：</span>高吨位碳布与自动化生产工艺的加持下，中鱼瞬间，<span class="text-vitalityOrange font-bold">X-Power逆丝结构</span>让反拨力极强，感觉不是你在拉鱼，是竿子自己在往回弹。
                         </p>
                     </div>
                 </div>
-                <div class="glass-panel p-10 rounded-3xl relative group animate-on-scroll delay-100 cursor-default">
-                    <div class="absolute -top-8 -left-6 text-[10rem] font-black text-gray-800 opacity-10 group-hover:text-vitalityOrange group-hover:opacity-20 transition-all duration-700 transform group-hover:translate-x-4">02</div>
+                <!-- Insight 2 -->
+                <div class="glass-panel p-10 2xl:p-12 rounded-3xl relative group animate-on-scroll delay-100 cursor-default">
+                    <div class="absolute -top-8 -left-6 text-[10rem] 2xl:text-[12rem] font-black text-gray-800 opacity-10 group-hover:text-vitalityOrange group-hover:opacity-20 transition-all duration-700 transform group-hover:translate-x-4">02</div>
                     <div class="relative z-10">
-                        <h3 class="text-2xl font-bold text-white mb-6 group-hover:text-vitalityOrange transition-colors">重不重头？抛投累吗？</h3>
-                        <div class="h-1 w-16 bg-gray-700 mb-8 group-hover:w-full group-hover:bg-vitalityOrange transition-all duration-700"></div>
-                        <p class="text-gray-400 leading-relaxed text-base group-hover:text-gray-200 transition-colors">
-                            <span class="text-white font-bold block mb-3 text-lg">体验官实测@我是空军佬：</span><span class="text-vitalityOrange font-bold">28偏19</span>的调性做得刚刚好。去除了多余的漆水重量，重心靠后。连续抛投一整个下午，手臂没有酸痛感。
+                        <h3 class="text-2xl 2xl:text-3xl font-bold text-white mb-6 2xl:mb-8 group-hover:text-vitalityOrange transition-colors">重不重头？抛投累吗？</h3>
+                        <div class="h-1 w-16 2xl:w-20 bg-gray-700 mb-8 2xl:mb-8 group-hover:w-full group-hover:bg-vitalityOrange transition-all duration-700"></div>
+                        <p class="text-gray-400 leading-relaxed text-base 2xl:text-xl group-hover:text-gray-200 transition-colors">
+                            <span class="text-white font-bold block mb-3 2xl:mb-4 text-lg 2xl:text-2xl">体验官实测@我是空军佬：</span><span class="text-vitalityOrange font-bold">28偏19</span>的调性做得刚刚好。去除了多余的漆水重量，重心靠后。连续抛投一整个下午，手臂没有酸痛感。
                         </p>
                     </div>
                 </div>
-                <div class="glass-panel p-10 rounded-3xl relative group animate-on-scroll delay-200 cursor-default">
-                    <div class="absolute -top-8 -left-6 text-[10rem] font-black text-gray-800 opacity-10 group-hover:text-vitalityOrange group-hover:opacity-20 transition-all duration-700 transform group-hover:translate-x-4">03</div>
+                <!-- Insight 3 -->
+                <div class="glass-panel p-10 2xl:p-12 rounded-3xl relative group animate-on-scroll delay-200 cursor-default">
+                    <div class="absolute -top-8 -left-6 text-[10rem] 2xl:text-[12rem] font-black text-gray-800 opacity-10 group-hover:text-vitalityOrange group-hover:opacity-20 transition-all duration-700 transform group-hover:translate-x-4">03</div>
                     <div class="relative z-10">
-                        <h3 class="text-2xl font-bold text-white mb-6 group-hover:text-vitalityOrange transition-colors">涂装手感怎么样？</h3>
-                        <div class="h-1 w-16 bg-gray-700 mb-8 group-hover:w-full group-hover:bg-vitalityOrange transition-all duration-700"></div>
-                        <p class="text-gray-400 leading-relaxed text-base group-hover:text-gray-200 transition-colors">
-                            <span class="text-white font-bold block mb-3 text-lg">体验官实测@钓鱼为娱不为渔：</span>依旧延续了前面两代螺纹钢的“战斗橙”，并在此基础上增加了立体感。手上有水或者鱼黏液的时候，这种<span class="text-vitalityOrange font-bold">3D工业质感</span>反而更加防滑。
+                        <h3 class="text-2xl 2xl:text-3xl font-bold text-white mb-6 2xl:mb-8 group-hover:text-vitalityOrange transition-colors">涂装手感怎么样？</h3>
+                        <div class="h-1 w-16 2xl:w-20 bg-gray-700 mb-8 2xl:mb-8 group-hover:w-full group-hover:bg-vitalityOrange transition-all duration-700"></div>
+                        <p class="text-gray-400 leading-relaxed text-base 2xl:text-xl group-hover:text-gray-200 transition-colors">
+                            <span class="text-white font-bold block mb-3 2xl:mb-4 text-lg 2xl:text-2xl">体验官实测@钓鱼为娱不为渔：</span>依旧延续了前面两代螺纹钢的“战斗橙”，并在此基础上增加了立体感。手上有水或者鱼黏液的时候，这种<span class="text-vitalityOrange font-bold">3D工业质感</span>反而更加防滑。
                         </p>
                     </div>
                 </div>
@@ -423,59 +445,59 @@
     </section>
 
     <!-- MODULE 5: COMPARISON SECTION -->
-    <section class="py-12 md:py-20 bg-techBlack border-t border-gray-900 snap-start h-auto min-h-screen flex items-center">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll w-full">
-            <div class="text-center mb-12 space-y-2 md:space-y-4">
-                <span class="text-gray-500 font-mono tracking-widest text-sm uppercase block mb-2">GUIDE</span>
-                <h2 class="text-3xl md:text-5xl font-black text-white neon-text tracking-tight"><span class="text-gray-500">大钢</span> VS <span class="text-vitalityOrange">小钢</span></h2>
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto">不是新旧之分，而是战场的选择。</p>
+    <section class="py-12 md:py-20 2xl:py-24 bg-techBlack border-t border-gray-900 snap-start h-auto min-h-screen flex items-center">
+        <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll w-full">
+            <div class="text-center mb-12 2xl:mb-16 space-y-2 md:space-y-4">
+                <span class="text-gray-500 font-mono tracking-widest text-sm 2xl:text-lg uppercase block mb-2">GUIDE</span>
+                <h2 class="text-3xl md:text-5xl 2xl:text-6xl font-black text-white neon-text tracking-tight"><span class="text-gray-500">大钢</span> VS <span class="text-vitalityOrange">小钢</span></h2>
+                <p class="text-gray-400 text-lg 2xl:text-2xl max-w-2xl 2xl:max-w-4xl mx-auto">不是新旧之分，而是战场的选择。</p>
             </div>
-            <div class="flex flex-col md:flex-row gap-6 md:gap-0 max-w-5xl mx-auto items-stretch">
+            <div class="flex flex-col md:flex-row gap-6 md:gap-0 2xl:gap-0 max-w-5xl 2xl:max-w-7xl mx-auto items-stretch">
                 <!-- Big Steel (Left) -->
-                <div class="flex-1 bg-deepGray border border-gray-800 rounded-2xl md:rounded-r-none md:rounded-l-2xl p-6 md:p-10 relative overflow-hidden group hover:bg-gray-800 transition-colors duration-500">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 font-black text-8xl select-none group-hover:opacity-20 transition-opacity text-white">MAX</div>
+                <div class="flex-1 bg-deepGray border border-gray-800 rounded-2xl md:rounded-r-none md:rounded-l-2xl p-6 md:p-10 2xl:p-12 relative overflow-hidden group hover:bg-gray-800 transition-colors duration-500">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 font-black text-8xl 2xl:text-[10rem] select-none group-hover:opacity-20 transition-opacity text-white">MAX</div>
                     <div class="relative z-10">
-                        <h3 class="text-2xl font-bold text-gray-300 mb-2">螺纹钢 · I & II</h3>
-                        <div class="text-4xl font-black text-white mb-6 tracking-tight">"大钢"</div>
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-start gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
-                                <div class="mt-1.5 w-2 h-2 rounded-full bg-gray-500"></div><span><strong>定位：</strong>攻城重锤，守钓巨物</span>
+                        <h3 class="text-2xl 2xl:text-3xl font-bold text-gray-300 mb-2 2xl:mb-4">螺纹钢 · I & II</h3>
+                        <div class="text-4xl 2xl:text-5xl font-black text-white mb-6 2xl:mb-8 tracking-tight">"大钢"</div>
+                        <ul class="space-y-4 2xl:space-y-6 mb-8 2xl:mb-10">
+                            <li class="flex items-start gap-3 text-gray-400 group-hover:text-gray-300 transition-colors text-base 2xl:text-xl">
+                                <div class="mt-1.5 2xl:mt-2 w-2 2xl:w-3 h-2 2xl:h-3 rounded-full bg-gray-500"></div><span><strong>定位：</strong>攻城重锤，守钓巨物</span>
                             </li>
-                            <li class="flex items-start gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
-                                <div class="mt-1.5 w-2 h-2 rounded-full bg-gray-500"></div><span><strong>目标：</strong>20斤+ 大草/青鱼/鲟鱼</span>
+                            <li class="flex items-start gap-3 text-gray-400 group-hover:text-gray-300 transition-colors text-base 2xl:text-xl">
+                                <div class="mt-1.5 2xl:mt-2 w-2 2xl:w-3 h-2 2xl:h-3 rounded-full bg-gray-500"></div><span><strong>目标：</strong>20斤+ 大草/青鱼/鲟鱼</span>
                             </li>
-                            <li class="flex items-start gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
-                                <div class="mt-1.5 w-2 h-2 rounded-full bg-gray-500"></div><span><strong>手感：</strong>厚重扎实，甚至有些压手</span>
+                            <li class="flex items-start gap-3 text-gray-400 group-hover:text-gray-300 transition-colors text-base 2xl:text-xl">
+                                <div class="mt-1.5 2xl:mt-2 w-2 2xl:w-3 h-2 2xl:h-3 rounded-full bg-gray-500"></div><span><strong>手感：</strong>厚重扎实，甚至有些压手</span>
                             </li>
                         </ul>
-                        <div class="inline-block px-4 py-2 bg-black/40 text-gray-400 rounded text-sm font-mono border border-gray-700">适合：体能好的守钓型钓友</div>
+                        <div class="inline-block px-4 py-2 2xl:px-6 2xl:py-3 bg-black/40 text-gray-400 rounded text-sm 2xl:text-lg font-mono border border-gray-700">适合：体能好的守钓型钓友</div>
                     </div>
                 </div>
                 <!-- VS Badge (Center) -->
                 <div class="hidden md:flex items-center justify-center w-16 relative z-20 -ml-8 -mr-8 pointer-events-none">
-                    <div class="vs-badge w-16 h-16 rounded-full bg-white text-black font-black italic text-2xl flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.2)] border-4 border-techBlack z-30 transform scale-0">VS</div>
+                    <div class="vs-badge w-16 h-16 2xl:w-20 2xl:h-20 rounded-full bg-white text-black font-black italic text-2xl 2xl:text-3xl flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.2)] border-4 border-techBlack z-30 transform scale-0">VS</div>
                 </div>
                 <!-- Small Steel (Right - Highlighted) -->
-                <div class="flex-1 bg-gradient-to-br from-vitalityOrange to-darkOrange rounded-2xl md:rounded-l-none md:rounded-r-2xl p-6 md:p-10 relative overflow-hidden transform md:scale-105 shadow-2xl shadow-orange-900/50 z-10 group hover:shadow-orange-600/30 transition-all duration-500">
-                    <div class="absolute top-0 right-0 p-4 opacity-20 text-black font-black text-8xl select-none group-hover:opacity-30 transition-opacity">LITE</div>
+                <div class="flex-1 bg-gradient-to-br from-vitalityOrange to-darkOrange rounded-2xl md:rounded-l-none md:rounded-r-2xl p-6 md:p-10 2xl:p-12 relative overflow-hidden transform md:scale-105 shadow-2xl shadow-orange-900/50 z-10 group hover:shadow-orange-600/30 transition-all duration-500">
+                    <div class="absolute top-0 right-0 p-4 opacity-20 text-black font-black text-8xl 2xl:text-[10rem] select-none group-hover:opacity-30 transition-opacity">LITE</div>
                     <div class="absolute inset-0 bg-noise opacity-20 mix-blend-multiply pointer-events-none"></div>
                     <div class="relative z-10 text-white">
-                        <div class="flex items-center mb-2">
-                            <h3 class="text-2xl font-bold opacity-90">螺纹钢 · 小综合</h3>
+                        <div class="flex items-center mb-2 2xl:mb-4">
+                            <h3 class="text-2xl 2xl:text-3xl font-bold opacity-90">螺纹钢 · 小综合</h3>
                         </div>
-                        <div class="text-4xl font-black mb-6 tracking-tight">"小钢"</div>
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-start gap-3">
-                                <div class="mt-1.5 w-2 h-2 rounded-full bg-white shadow-[0_0_8px_white]"></div><span><strong>定位：</strong>全能刺客，大小通杀</span>
+                        <div class="text-4xl 2xl:text-5xl font-black mb-6 2xl:mb-8 tracking-tight">"小钢"</div>
+                        <ul class="space-y-4 2xl:space-y-6 mb-8 2xl:mb-10">
+                            <li class="flex items-start gap-3 text-base 2xl:text-xl">
+                                <div class="mt-1.5 2xl:mt-2 w-2 2xl:w-3 h-2 2xl:h-3 rounded-full bg-white shadow-[0_0_8px_white]"></div><span><strong>定位：</strong>全能刺客，大小通杀</span>
                             </li>
-                            <li class="flex items-start gap-3">
-                                <div class="mt-1.5 w-2 h-2 rounded-full bg-white shadow-[0_0_8px_white]"></div><span><strong>目标：</strong>鲫/鲤/罗非/10斤内草鱼</span>
+                            <li class="flex items-start gap-3 text-base 2xl:text-xl">
+                                <div class="mt-1.5 2xl:mt-2 w-2 2xl:w-3 h-2 2xl:h-3 rounded-full bg-white shadow-[0_0_8px_white]"></div><span><strong>目标：</strong>鲫/鲤/罗非/10斤内草鱼</span>
                             </li>
-                            <li class="flex items-start gap-3">
-                                <div class="mt-1.5 w-2 h-2 rounded-full bg-white shadow-[0_0_8px_white]"></div><span><strong>手感：</strong><span class="font-bold underline decoration-2 underline-offset-4 decoration-white/50">仅 188g</span>，久抛不累</span>
+                            <li class="flex items-start gap-3 text-base 2xl:text-xl">
+                                <div class="mt-1.5 2xl:mt-2 w-2 2xl:w-3 h-2 2xl:h-3 rounded-full bg-white shadow-[0_0_8px_white]"></div><span><strong>手感：</strong><span class="font-bold underline decoration-2 underline-offset-4 decoration-white/50">仅 188g</span>，久抛不累</span>
                             </li>
                         </ul>
-                        <div class="inline-block px-4 py-2 bg-white/20 backdrop-blur-md rounded text-sm font-mono border border-white/30 group-hover:bg-white/30 transition-colors">适合：城市野钓/黑坑/高频抛投</div>
+                        <div class="inline-block px-4 py-2 2xl:px-6 2xl:py-3 bg-white/20 backdrop-blur-md rounded text-sm 2xl:text-lg font-mono border border-white/30 group-hover:bg-white/30 transition-colors">适合：城市野钓/黑坑/高频抛投</div>
                     </div>
                 </div>
             </div>
@@ -483,122 +505,125 @@
     </section>
 
     <!-- MODULE 6: VIOLENT TEST GROUP -->
-    <section class="py-32 bg-techBlack relative snap-start">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="text-center mb-12 animate-on-scroll">
-                <h2 class="text-3xl md:text-5xl font-black text-white neon-text tracking-tight">实测反馈</h2>
-                <p class="mt-4 text-gray-400">来自一线钓友的真实反馈。</p>
+    <section class="py-24 2xl:py-32 bg-techBlack relative snap-start">
+        <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="text-center mb-12 2xl:mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-5xl 2xl:text-6xl font-black text-white neon-text tracking-tight">实测反馈</h2>
+                <p class="mt-4 2xl:mt-6 text-gray-400 2xl:text-2xl">来自一线钓友的真实反馈。</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Tester 1, 2, 3 ... (Same content as before) -->
-                <div class="glass-panel p-8 rounded-3xl flex flex-col group animate-on-scroll cursor-pointer">
-                    <div class="flex items-center space-x-5 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 2xl:gap-12">
+                <!-- Tester 1 -->
+                <div class="glass-panel p-8 2xl:p-10 rounded-3xl flex flex-col group animate-on-scroll cursor-pointer">
+                    <div class="flex items-center space-x-5 2xl:space-x-6 mb-8 2xl:mb-8">
                         <div class="relative">
-                            <div class="absolute inset-0 bg-vitalityOrange blur opacity-0 group-hover:opacity-50 transition duration-500 rounded-full"></div><img src="https://placehold.co/100x100/666/white?text=User1" class="relative z-10 w-20 h-20 rounded-full border-4 border-gray-600 group-hover:border-vitalityOrange transition duration-500 transform group-hover:rotate-12">
+                            <div class="absolute inset-0 bg-vitalityOrange blur opacity-0 group-hover:opacity-50 transition duration-500 rounded-full"></div>
+                            <img src="asset/u1.png" class="relative z-10 w-20 h-20 2xl:w-24 2xl:h-24 rounded-full border-4 border-gray-600 group-hover:border-vitalityOrange transition duration-500 transform group-hover:rotate-12 object-cover">
                         </div>
                         <div>
-                            <h3 class="text-white font-bold text-xl group-hover:text-vitalityOrange transition">@小红帽爱热闹琪宝</h3>
-                            <p class="text-gray-500 text-xs uppercase tracking-widest mt-1">江河/湖库</p>
+                            <h3 class="text-white font-bold text-xl 2xl:text-2xl group-hover:text-vitalityOrange transition">@小红帽爱热闹琪宝</h3>
+                            <p class="text-gray-500 text-xs 2xl:text-base uppercase tracking-widest mt-1">江河/湖库</p>
                         </div>
                     </div>
-                    <blockquote class="text-gray-300 italic mb-8 flex-grow relative pl-6 border-l-2 border-gray-700 group-hover:border-vitalityOrange transition-colors text-lg min-h-[6rem]"><span class="typewriter-text">"杆子不错，和卓越有一拼，都是小综合，手持感好，不重头，一斤的鱼直接飞，赞赞赞。"</span></blockquote>
-                    <div class="flex items-center justify-between text-xs font-bold text-vitalityOrange pt-6 border-t border-gray-800"><span class="uppercase tracking-widest">推荐指数</span><span class="text-base text-yellow-400">★★★★★</span></div>
+                    <blockquote class="text-gray-300 italic mb-8 2xl:mb-8 flex-grow relative pl-6 2xl:pl-8 border-l-2 2xl:border-l-4 border-gray-700 group-hover:border-vitalityOrange transition-colors text-lg 2xl:text-2xl min-h-[6rem]"><span class="typewriter-text">"杆子不错，和卓越有一拼，都是小综合，手持感好，不重头，一斤的鱼直接飞，赞赞赞。"</span></blockquote>
+                    <div class="flex items-center justify-between text-xs 2xl:text-lg font-bold text-vitalityOrange pt-6 2xl:pt-8 border-t border-gray-800"><span class="uppercase tracking-widest">推荐指数</span><span class="text-base 2xl:text-xl text-yellow-400">★★★★★</span></div>
                 </div>
                 <!-- Tester 2 -->
-                <div class="glass-panel p-8 rounded-3xl flex flex-col group animate-on-scroll delay-100 cursor-pointer">
-                    <div class="flex items-center space-x-5 mb-8">
+                <div class="glass-panel p-8 2xl:p-10 rounded-3xl flex flex-col group animate-on-scroll delay-100 cursor-pointer">
+                    <div class="flex items-center space-x-5 2xl:space-x-6 mb-8 2xl:mb-8">
                         <div class="relative">
-                            <div class="absolute inset-0 bg-vitalityOrange blur opacity-0 group-hover:opacity-50 transition duration-500 rounded-full"></div><img src="https://placehold.co/100x100/444/white?text=User2" class="relative z-10 w-20 h-20 rounded-full border-4 border-gray-600 group-hover:border-vitalityOrange transition duration-500 transform group-hover:rotate-12">
+                            <div class="absolute inset-0 bg-vitalityOrange blur opacity-0 group-hover:opacity-50 transition duration-500 rounded-full"></div>
+                            <img src="asset/u2.png" class="relative z-10 w-20 h-20 2xl:w-24 2xl:h-24 rounded-full border-4 border-gray-600 group-hover:border-vitalityOrange transition duration-500 transform group-hover:rotate-12 object-cover">
                         </div>
                         <div>
-                            <h3 class="text-white font-bold text-xl group-hover:text-vitalityOrange transition">@lixiyu418</h3>
-                            <p class="text-gray-500 text-xs uppercase tracking-widest mt-1">黑坑/水库</p>
+                            <h3 class="text-white font-bold text-xl 2xl:text-2xl group-hover:text-vitalityOrange transition">@lixiyu418</h3>
+                            <p class="text-gray-500 text-xs 2xl:text-base uppercase tracking-widest mt-1">黑坑/水库</p>
                         </div>
                     </div>
-                    <blockquote class="text-gray-300 italic mb-8 flex-grow relative pl-6 border-l-2 border-gray-700 group-hover:border-vitalityOrange transition-colors text-lg min-h-[6rem]"><span class="typewriter-text">"汉鼎螺纹钢小综合非常好用，杆子手持感非常好，抛杆时落点精准，大小鱼可以通杀。"</span></blockquote>
-                    <div class="flex items-center justify-between text-xs font-bold text-vitalityOrange pt-6 border-t border-gray-800"><span class="uppercase tracking-widest">推荐指数</span><span class="text-base text-yellow-400">★★★★★</span></div>
+                    <blockquote class="text-gray-300 italic mb-8 2xl:mb-8 flex-grow relative pl-6 2xl:pl-8 border-l-2 2xl:border-l-4 border-gray-700 group-hover:border-vitalityOrange transition-colors text-lg 2xl:text-2xl min-h-[6rem]"><span class="typewriter-text">"汉鼎螺纹钢小综合非常好用，杆子手持感非常好，抛杆时落点精准，大小鱼可以通杀。"</span></blockquote>
+                    <div class="flex items-center justify-between text-xs 2xl:text-lg font-bold text-vitalityOrange pt-6 2xl:pt-8 border-t border-gray-800"><span class="uppercase tracking-widest">推荐指数</span><span class="text-base 2xl:text-xl text-yellow-400">★★★★★</span></div>
                 </div>
                 <!-- Tester 3 -->
-                <div class="glass-panel p-8 rounded-3xl flex flex-col group animate-on-scroll delay-200 cursor-pointer">
-                    <div class="flex items-center space-x-5 mb-8">
+                <div class="glass-panel p-8 2xl:p-10 rounded-3xl flex flex-col group animate-on-scroll delay-200 cursor-pointer">
+                    <div class="flex items-center space-x-5 2xl:space-x-6 mb-8 2xl:mb-8">
                         <div class="relative">
-                            <div class="absolute inset-0 bg-vitalityOrange blur opacity-0 group-hover:opacity-50 transition duration-500 rounded-full"></div><img src="https://placehold.co/100x100/555/white?text=User3" class="relative z-10 w-20 h-20 rounded-full border-4 border-gray-600 group-hover:border-vitalityOrange transition duration-500 transform group-hover:rotate-12">
+                            <div class="absolute inset-0 bg-vitalityOrange blur opacity-0 group-hover:opacity-50 transition duration-500 rounded-full"></div>
+                            <img src="asset/u3.png" class="relative z-10 w-20 h-20 2xl:w-24 2xl:h-24 rounded-full border-4 border-gray-600 group-hover:border-vitalityOrange transition duration-500 transform group-hover:rotate-12 object-cover">
                         </div>
                         <div>
-                            <h3 class="text-white font-bold text-xl group-hover:text-vitalityOrange transition">@此情何苦望断肠</h3>
-                            <p class="text-gray-500 text-xs uppercase tracking-widest mt-1">休闲/野钓</p>
+                            <h3 class="text-white font-bold text-xl 2xl:text-2xl group-hover:text-vitalityOrange transition">@此情何苦望断肠</h3>
+                            <p class="text-gray-500 text-xs 2xl:text-base uppercase tracking-widest mt-1">休闲/野钓</p>
                         </div>
                     </div>
-                    <blockquote class="text-gray-300 italic mb-8 flex-grow relative pl-6 border-l-2 border-gray-700 group-hover:border-vitalityOrange transition-colors text-lg min-h-[6rem]"><span class="typewriter-text">"杆子抛投很准，手感很好。小鱼有手感，大鱼回鱼块。颜值很高。强烈推荐。"</span></blockquote>
-                    <div class="flex items-center justify-between text-xs font-bold text-vitalityOrange pt-6 border-t border-gray-800"><span class="uppercase tracking-widest">推荐指数</span><span class="text-base text-yellow-400">★★★★★</span></div>
+                    <blockquote class="text-gray-300 italic mb-8 2xl:mb-8 flex-grow relative pl-6 2xl:pl-8 border-l-2 2xl:border-l-4 border-gray-700 group-hover:border-vitalityOrange transition-colors text-lg 2xl:text-2xl min-h-[6rem]"><span class="typewriter-text">"杆子抛投很准，手感很好。小鱼有手感，大鱼回鱼块。颜值很高。强烈推荐。"</span></blockquote>
+                    <div class="flex items-center justify-between text-xs 2xl:text-lg font-bold text-vitalityOrange pt-6 2xl:pt-8 border-t border-gray-800"><span class="uppercase tracking-widest">推荐指数</span><span class="text-base 2xl:text-xl text-yellow-400">★★★★★</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- MODULE 7: REAL COMBAT VIDEOS (Restored) -->
-    <section class="py-24 bg-gradient-to-b from-techBlack to-gray-900 relative snap-start">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full animate-on-scroll">
-            <div class="text-center mb-16">
-                <span class="text-vitalityOrange font-mono tracking-[0.5em] text-sm uppercase block mb-2">ACTION</span>
-                <h2 class="text-3xl md:text-5xl font-black text-white neon-text tracking-tight">实战视频演示</h2>
-                <p class="mt-4 text-gray-400">拒绝空谈，视频为证。</p>
+    <!-- MODULE 7: REAL COMBAT VIDEOS -->
+    <section class="py-24 2xl:py-32 bg-gradient-to-b from-techBlack to-gray-900 relative snap-start">
+        <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-4 sm:px-6 lg:px-8 w-full animate-on-scroll">
+            <div class="text-center mb-16 2xl:mb-20">
+                <span class="text-vitalityOrange font-mono tracking-[0.5em] text-sm 2xl:text-lg uppercase block mb-2">ACTION</span>
+                <h2 class="text-3xl md:text-5xl 2xl:text-6xl font-black text-white neon-text tracking-tight">实战视频演示</h2>
+                <p class="mt-4 2xl:mt-6 text-gray-400 2xl:text-2xl">拒绝空谈，视频为证。</p>
             </div>
 
             <!-- Video Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 2xl:gap-12">
 
-                <!-- Video 1 (666.mp4) -->
-                <div class="relative group rounded-3xl overflow-hidden shadow-2xl border border-gray-800 hover:border-vitalityOrange transition-all duration-500">
+                <!-- Video 1 -->
+                <div class="relative group rounded-3xl overflow-hidden shadow-2xl border border-gray-800 hover:border-vitalityOrange transition-all duration-500 video-container">
                     <div class="aspect-video bg-black relative">
-                        <!-- 移除 loop，保留 playsinline -->
+                        <!-- 还原本地视频 -->
                         <video id="video-player" playsinline class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-500 cursor-pointer" onclick="toggleVideo1()">
                             <source src="./asset/666.mp4" type="video/mp4">
-                            <img src="https://placehold.co/800x450/1a1a1a/333?text=Video+Placeholder" class="w-full h-full object-cover">
+                             <!-- 无占位符 -->
                         </video>
                         <!-- Play Button Overlay -->
                         <div id="play-overlay" class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="toggleVideo1()">
-                            <div class="w-16 h-16 bg-vitalityOrange/80 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                            <div class="w-16 h-16 2xl:w-20 2xl:h-20 bg-vitalityOrange/80 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 2xl:w-10 2xl:h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M8 5v14l11-7z" />
                                 </svg>
                             </div>
                         </div>
                     </div>
-                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/80 to-transparent p-8 pointer-events-none">
-                        <div class="flex items-center gap-3">
-                            <div class="w-1 h-8 bg-vitalityOrange"></div>
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/80 to-transparent p-8 2xl:p-10 pointer-events-none">
+                        <div class="flex items-center gap-3 2xl:gap-5">
+                            <div class="w-1 h-8 2xl:h-12 bg-vitalityOrange"></div>
                             <div>
-                                <h3 class="text-2xl font-bold text-white">满弓测试</h3>
-                                <p class="text-gray-400 text-sm">完美弧度 · 强力反拨</p>
+                                <h3 class="text-2xl 2xl:text-4xl font-bold text-white">满弓测试</h3>
+                                <p class="text-gray-400 text-sm 2xl:text-xl">完美弧度 · 强力反拨</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Video 2 (555.mp4) -->
-                <div class="relative group rounded-3xl overflow-hidden shadow-2xl border border-gray-800 hover:border-vitalityOrange transition-all duration-500">
+                <!-- Video 2 -->
+                <div class="relative group rounded-3xl overflow-hidden shadow-2xl border border-gray-800 hover:border-vitalityOrange transition-all duration-500 video-container">
                     <div class="aspect-video bg-black relative">
-                        <!-- 移除 loop，保留 playsinline -->
+                        <!-- 还原本地视频 -->
                         <video id="video-player-2" playsinline class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-500 cursor-pointer" onclick="toggleVideo2()">
                             <source src="./asset/555.mp4" type="video/mp4">
-                            <img src="https://placehold.co/800x450/1a1a1a/333?text=Video+Placeholder" class="w-full h-full object-cover">
+                            <!-- 无占位符 -->
                         </video>
                         <!-- Play Button Overlay -->
                         <div id="play-overlay-2" class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="toggleVideo2()">
-                            <div class="w-16 h-16 bg-vitalityOrange/80 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                            <div class="w-16 h-16 2xl:w-20 2xl:h-20 bg-vitalityOrange/80 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 2xl:w-10 2xl:h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M8 5v14l11-7z" />
                                 </svg>
                             </div>
                         </div>
                     </div>
-                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/80 to-transparent p-8 pointer-events-none">
-                        <div class="flex items-center gap-3">
-                            <div class="w-1 h-8 bg-vitalityOrange"></div>
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/80 to-transparent p-8 2xl:p-10 pointer-events-none">
+                        <div class="flex items-center gap-3 2xl:gap-5">
+                            <div class="w-1 h-8 2xl:h-12 bg-vitalityOrange"></div>
                             <div>
-                                <h3 class="text-2xl font-bold text-white">遛鱼弧度</h3>
-                                <p class="text-gray-400 text-sm">控鱼稳准狠 · 护线不跑鱼</p>
+                                <h3 class="text-2xl 2xl:text-4xl font-bold text-white">遛鱼弧度</h3>
+                                <p class="text-gray-400 text-sm 2xl:text-xl">控鱼稳准狠 · 护线不跑鱼</p>
                             </div>
                         </div>
                     </div>
@@ -656,16 +681,16 @@
         </div>
     </section>
 
-    <!-- NEW MODULE 8: ENDING PAGE (New Separate Section) -->
+    <!-- NEW MODULE 8: ENDING PAGE -->
     <section id="last-section" class="relative snap-start h-screen w-full overflow-hidden group cursor-pointer bg-black">
-        <!-- 结尾彩蛋视频 asset/222.mp4 -->
+        <!-- 结尾视频: 还原为 asset/222.mp4 -->
         <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-40 transition duration-1000 group-hover:opacity-60">
             <source src="asset/222.mp4" type="video/mp4">
         </video>
 
         <!-- Minimal Copyright inside this section -->
         <div class="absolute bottom-8 w-full text-center z-10">
-            <p class="text-gray-600 text-xs">© 2025 汉鼎 | 让更多的人享受垂钓乐趣！</p>
+            <p class="text-gray-600 text-xs 2xl:text-lg">© 2025 汉鼎 | 让更多的人享受垂钓乐趣！</p>
         </div>
     </section>
 
@@ -743,16 +768,22 @@
         const modalContent = document.getElementById('ending-content');
         const lastSection = document.getElementById('last-section');
 
-        // Right-click logic for general scrolling
-        window.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
+        // Click logic for general scrolling (Left Click)
+        window.addEventListener('click', (e) => {
+             // 如果点击的是视频区域、导航栏或最后的弹窗，则不触发滚动
+             if (e.target.closest('.video-container') || e.target.closest('nav') || e.target.closest('#ending-modal')) {
+                return;
+             }
+
+            // Remove e.preventDefault() so standard clicks still work if needed, 
+            // but we returned early for interactive elements above.
+            
             const viewportHeight = window.innerHeight;
             const currentScroll = window.scrollY;
             const maxScroll = document.body.scrollHeight - viewportHeight;
 
             const nextScroll = Math.ceil((currentScroll + 10) / viewportHeight) * viewportHeight;
 
-            // Just scroll, don't auto-trigger modal on scroll anymore, let user click the last section
             window.scrollTo({
                 top: Math.min(nextScroll, maxScroll),
                 behavior: 'smooth'
@@ -771,10 +802,27 @@
             });
         }
 
+        // 新增：点击结束语蒙层，回到首页
+        if (modal) {
+            modal.addEventListener('click', () => {
+                hideModal();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
         function showModal() {
             modal.classList.remove('opacity-0', 'pointer-events-none');
             modalContent.classList.remove('opacity-0', 'scale-90');
             modalContent.classList.add('opacity-100', 'scale-100');
+        }
+
+        function hideModal() {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.add('opacity-0', 'scale-90');
+            modalContent.classList.remove('opacity-100', 'scale-100');
         }
     </script>
 </body>
